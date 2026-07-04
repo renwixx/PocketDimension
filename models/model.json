@@ -1,0 +1,22 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "pocket_dimension:item/pocket_display/inside",
+		"particle": "pocket_dimension:item/pocket_display/inside"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [32, 32, 32],
+			"faces": {
+				"north": {"uv": [5.33333, 10.66667, 10.66667, 16], "texture": "#0"},
+				"east": {"uv": [5.33333, 10.66667, 10.66667, 16], "texture": "#0"},
+				"south": {"uv": [5.33333, 10.66667, 10.66667, 16], "texture": "#0"},
+				"west": {"uv": [5.33333, 10.66667, 10.66667, 16], "texture": "#0"},
+				"up": {"uv": [5.33333, 5.33333, 10.66667, 10.66667], "texture": "#0"},
+				"down": {"uv": [5.33333, 5.33333, 10.66667, 10.66667], "texture": "#0"}
+			}
+		}
+	]
+}

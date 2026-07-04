@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "pocket_dimension:block/pocket_block",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "pocket_dimension:block/pocket_block",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "pocket_dimension:block/pocket_block",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "pocket_dimension:block/pocket_block"
+    }
+  }
+}

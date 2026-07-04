@@ -1,0 +1,26 @@
+{
+  "attributes": {
+    "minecraft:gameplay/bed_rule": {
+      "can_sleep": "never",
+      "can_set_spawn": "never",
+      "explodes": false,
+      "error_message": {
+        "translate": "pocket_dimension.message.cannot_sleep"
+      }
+    },
+    "minecraft:gameplay/sky_light_level": 15
+  },
+  "has_skylight": false,
+  "has_ceiling": false,
+  "coordinate_scale": 1,
+  "ambient_light": 1,
+  "has_fixed_time": true,
+  "logical_height": 0,
+  "skybox": "none",
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "min_y": 0,
+  "height": 16,
+  "monster_spawn_light_level": 0,
+  "monster_spawn_block_light_limit": 0,
+  "cardinal_light": "nether"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "E",
+    "B"
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "E": "minecraft:ender_eye",
+    "B": "minecraft:bundle"
+  },
+  "result": {
+    "id": "pocket_dimension:pocket",
+    "count": 1
+  }
+}

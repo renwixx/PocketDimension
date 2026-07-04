@@ -1,0 +1,47 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "fallback": {
+          "type": "minecraft:model",
+          "model": "block/diamond_block"
+        },
+    "cases": [
+      {
+        "when": "inside",
+        "model": {
+          "type": "minecraft:model",
+          "model": "pocket_dimension:item/pocket_display/inside"
+        }
+      },
+      {
+        "when": "teleport",
+        "model": {
+          "type": "minecraft:model",
+          "model": "pocket_dimension:item/pocket_display/teleport"
+        }
+      },
+      {
+        "when": "outside",
+        "model": {
+          "type": "minecraft:model",
+          "model": "pocket_dimension:item/pocket_display/outside"
+        }
+      },
+      {
+        "when": "outside_animation",
+        "model": {
+          "type": "minecraft:model",
+          "model": "pocket_dimension:item/pocket_display/outside_animation"
+        }
+      },
+      {
+        "when": "outside_side",
+        "model": {
+          "type": "minecraft:model",
+          "model": "pocket_dimension:item/pocket_display/outside_side"
+        }
+      }
+    ]
+  }
+}

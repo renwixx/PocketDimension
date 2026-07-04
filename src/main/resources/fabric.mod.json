@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "pocket_dimension",
+	"version": "${version}",
+	"name": "Pocket Dimension",
+	"description": "This Mod adds an Item with a small realm inside!",
+	"authors": [
+		"Renwixx"
+	],
+	"contact": {
+		"homepage": "https://github.com/renwixx/pocket_dimension",
+		"sources": "https://github.com/renwixx/pocket_dimension"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/pocket_dimension/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.renwixx.pocketdimension.PocketDimensionMod"
+		],
+		"client": [
+			"org.renwixx.pocketdimension.PocketDimensionClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

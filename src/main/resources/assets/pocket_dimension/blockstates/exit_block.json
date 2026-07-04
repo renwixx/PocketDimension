@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "pocket_dimension:block/exit_block" }
+  }
+}

@@ -1,0 +1,232 @@
+plugins {
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+repositories {
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"pocket_dimension" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	modImplementation "com.moandjiezana.toml:toml4j:0.7.2"
+	include "com.moandjiezana.toml:toml4j:0.7.2"
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+	def projectName = project.name
+	inputs.property "projectName", projectName
+	from("LICENSE") {
+		rename { "${it}_$projectName"}
+	}
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
+	repositories {
+	}
+}
+
+task dumpNbt(type: JavaExec) {
+    mainClass = 'org.renwixx.pocketdimension.NbtDumper'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task dumpBlockEntity {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.block.entity.BlockEntity')
+        clazz.getDeclaredMethods().each { println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpViews {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        println '--- ReadView ---'
+        loader.loadClass('net.minecraft.storage.ReadView').getMethods().each { println it.name + ' ' + it.parameterTypes }
+        println '--- WriteView ---'
+        loader.loadClass('net.minecraft.storage.WriteView').getMethods().each { println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpDataComponent {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.component.type.NbtComponent')
+        clazz.getMethods().each { println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpComponentType {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.component.DataComponentTypes')
+        def field = clazz.getField('BLOCK_ENTITY_DATA')
+        println 'Field type: ' + field.getType()
+    }
+}
+
+
+task dumpTypedEntityData {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.component.type.NbtComponent') // wait, I'll search for classes matching *NbtComponent*
+        println 'Dumping net.minecraft.component.type.NbtComponent'
+    }
+}
+
+
+task dumpBlockEntityDataComponent {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.component.DataComponentTypes')
+        def field = clazz.getField('BLOCK_ENTITY_DATA')
+        println 'Field generic type: ' + field.getGenericType()
+    }
+}
+
+
+task dumpTypedEntityDataMethods {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.entity.TypedEntityData')
+        clazz.getMethods().each { println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpBlockWithEntity {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.block.BlockWithEntity')
+        clazz.getMethods().each { println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpBlockMethods {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.block.Block')
+        clazz.getMethods().each { if (it.name.contains('Entity') || it.name.contains('Collision')) println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpAbstractBlockMethods {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.block.AbstractBlock')
+        clazz.getMethods().each { if (it.name.contains('Entity') || it.name.contains('Collision') || it.name.contains('on')) println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpAbstractBlockDeclaredMethods {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.block.AbstractBlock')
+        clazz.getDeclaredMethods().each { if (it.name.contains('Entity') || it.name.contains('Collision') || it.name.contains('on')) println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpEntityMethods {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.entity.Entity')
+        clazz.getMethods().each { if (it.name.toLowerCase().contains('world') || it.name.toLowerCase().contains('server')) println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+
+task dumpServerWorldMethods {
+    doLast {
+        def cl = sourceSets.main.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        def clazz = loader.loadClass('net.minecraft.server.world.ServerWorld')
+        clazz.getMethods().each { if (it.name.toLowerCase().contains('server')) println it.name + ' ' + it.parameterTypes }
+    }
+}
+
+task dumpRenderLayer {
+    doLast {
+        def cl = sourceSets.client.compileClasspath
+        def urls = cl.files.collect { it.toURI().toURL() }
+        def loader = new java.net.URLClassLoader(urls as java.net.URL[])
+        try {
+            def clazz = loader.loadClass('net.minecraft.client.render.BlockRenderLayer')
+            println '--- FIELDS ---'
+            clazz.getDeclaredFields().each { println it.name + ' ' + it.type.name }
+        } catch (Exception e) {
+            e.printStackTrace()
+        }
+    }
+}
+

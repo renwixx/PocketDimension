@@ -1,0 +1,98 @@
+# Pocket Dimension Configuration
+
+# ==========================================
+# Room Generation Settings
+# ==========================================
+
+[Room]
+
+# Distance between generated pocket rooms along the X-axis.
+offset_multiplier = 1000
+
+# The outer bounding box size of the pocket room.
+outer_size = 15
+
+# The minimum coordinate for the inner hollow space of the room.
+inner_min = 5
+
+# The maximum coordinate for the inner hollow space of the room.
+inner_max = 11
+
+# The minimum coordinate for the outer walls.
+wall_min = 4
+
+# The maximum coordinate for the outer walls.
+wall_max = 12
+
+# ==========================================
+# Relative Positions within the Room
+# ==========================================
+# Where the player spawns inside the room (relative to the room's corner).
+
+[Positions.Spawn]
+x = 10
+y = 5
+z = 8
+
+# Where the exit portal (Exit Block) is placed inside the room.
+[Positions.Portal]
+x = 12
+y_min = 6
+y_max = 8
+z_min = 7
+z_max = 9
+
+# Where the light source is placed.
+[Positions.Glowstone]
+x = 8
+y = 12
+z = 8
+
+# ==========================================
+# Rift Generation Settings
+# ==========================================
+
+[Rift]
+
+# Minimum coordinates of the rift bounding box.
+min_x = -1024
+min_y = 0
+min_z = -1024
+
+# Maximum coordinates of the rift bounding box.
+max_x = -1008
+max_y = 15
+max_z = -1008
+
+# The coordinates where the player is teleported when sent to the rift.
+spawn_x = -1016
+spawn_y = 8
+spawn_z = -1016
+
+# The X-coordinate threshold. Coordinates below this are considered part of the Rift.
+x_threshold = -1000
+
+# ==========================================
+# Gameplay Mechanics
+# ==========================================
+
+[Gameplay]
+
+# Cooldown (in ticks) for interaction error messages (40 ticks = 2 seconds).
+message_cooldown = 40
+
+# Whether the player must have full health to enter the pocket dimension.
+require_full_health = true
+
+# ==========================================
+# Fallback Blocks Configuration
+# ==========================================
+# These blocks are used if the NBT structure file is missing.
+
+[Blocks]
+
+fallback_wall = "pocket_dimension:pocket_wall"
+fallback_floor = "minecraft:bedrock"
+fallback_air = "minecraft:air"
+fallback_portal = "pocket_dimension:exit_block"
+fallback_glowstone = "minecraft:glowstone"
