@@ -8,10 +8,10 @@
 		"Renwixx"
 	],
 	"contact": {
-		"homepage": "https://github.com/renwixx/pocket_dimension",
-		"sources": "https://github.com/renwixx/pocket_dimension"
+		"homepage": "https://github.com/renwixx/pocketdimension",
+		"sources": "https://github.com/renwixx/pocketdimension"
 	},
-	"license": "CC0-1.0",
+	"license": "CC-BY-NC-4.0",
 	"icon": "assets/pocket_dimension/icon.png",
 	"environment": "*",
 	"entrypoints": {
