@@ -1,5 +1,7 @@
 # Pocket Dimension
 
+![In inventory](https://cdn.modrinth.com/data/cached_images/2958cd375be254b7f4324791441e3e8f86ac1092.png)
+
 A Fabric mod for Minecraft that gives players access to their own personal, portable dimension. Carry your base, storage room, or safe haven with you wherever you go!
 
 ## Features
@@ -16,8 +18,7 @@ A Fabric mod for Minecraft that gives players access to their own personal, port
 
 ## Crafting
 
-### The Pocket Block
-*(Image Placeholder: Pocket Block Crafting Recipe)*
+![Crafting recipe](https://cdn.modrinth.com/data/cached_images/f2dc77ba791990f415df88e9f687c532e4026e7d.png)
 
 ---
 
@@ -51,7 +52,7 @@ The mod is highly customizable. Upon first load, a `pocket_dimension.toml` file 
 ## Credits
 
 - Mod created by **Renwixx**
-- Special thanks to **[MavLeague](https://modrinth.com/user/MavLeague)** for creating original datapack and some of the wonderful textures used in this mod.
+- Special thanks to **[MavLeague](https://modrinth.com/user/MavLeague)** for creating [original datapack](https://modrinth.com/mod/pocket_dimension) and some of the wonderful textures used in this mod.
 
 ## License
 
