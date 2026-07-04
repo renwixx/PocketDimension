@@ -51,7 +51,7 @@ The mod is highly customizable. Upon first load, a `pocket_dimension.toml` file 
 ## Credits
 
 - Mod created by **Renwixx**
-- Special thanks to **[MavLeague](https://modrinth.com/user/MavLeague)** for creating some of the wonderful textures used in this mod.
+- Special thanks to **[MavLeague](https://modrinth.com/user/MavLeague)** for creating original datapack and some of the wonderful textures used in this mod.
 
 ## License
 
